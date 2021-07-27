@@ -15,6 +15,12 @@ body {
 
 .lazy__slide {
     height: 100vh;
+    background-image: url("https://keen-slider.io/images/loader.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100px;
+    background-color: #ccc;
+    min-height: auto;
 }
 
 @media only screen and (max-width: 600px) {
