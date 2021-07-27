@@ -7,8 +7,26 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/keen-slider@5.5.0/keen-slider.min.css"/>
 </head>
 <body>
-<div id="my-keen-slider" class="keen-slider"></div>
-
+<div class="slider-wrapper">
+    <div id="my-keen-slider" class="keen-slider"></div>
+    <svg
+            id="arrow-left"
+            class="arrow arrow--left"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24">
+        <path
+                d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"
+        ></path>
+    </svg>
+    <svg
+            id="arrow-right"
+            class="arrow arrow--right"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24">
+        <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"></path>
+    </svg>
+    <div id="dots" class="dots"></div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/keen-slider@5.0.2/keen-slider.min.js"></script>
 <script src="script.js"></script>
 </body>
