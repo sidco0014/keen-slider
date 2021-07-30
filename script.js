@@ -5,9 +5,14 @@ window.addEventListener('DOMContentLoaded', () => {
     createSliderBody(imageList, loadSliderWithData)
 })
 
+/*
+Creating slide body for each image
+@params: list of images and callback function
+@return: none
 
+*/
 let createSliderBody = function (imageList, callback) {
-    let sliderContainer = document.getElementById('my-keen-slider');
+    const sliderContainer = document.getElementById('my-keen-slider');
     let slideLen = imageList.length;
     for (let i = 0; i < slideLen; i++) {
         let slide = document.createElement('div');
@@ -26,11 +31,11 @@ Loading slider with images and initializing KeenSlider object
 
 */
 let loadSliderWithData = function (images) {
-    let elements = document.querySelectorAll(".lazy__slide div")
+    const elements = document.querySelectorAll(".lazy__slide div")
     let loaded = [];
     let isAutoplay = true;
     let interval = 0;
-    let slider = new KeenSlider("#my-keen-slider", {
+    const slider = new KeenSlider("#my-keen-slider", {
         created: function (instance) {
             document
                 .getElementById("arrow-left")
@@ -88,9 +93,9 @@ Adding arrow and dots to slider
 
 */
 let updateClasses = function (instance) {
-    let slide = instance.details().relativeSlide;
-    let arrowLeft = document.getElementById("arrow-left")
-    let arrowRight = document.getElementById("arrow-right")
+    const slide = instance.details().relativeSlide;
+    const arrowLeft = document.getElementById("arrow-left")
+    const arrowRight = document.getElementById("arrow-right")
     slide === 0
         ? arrowLeft.classList.add("arrow--disabled")
         : arrowLeft.classList.remove("arrow--disabled")
@@ -113,7 +118,7 @@ Custom function to autoplay slide
 @return: none
 
 */
-function autoplay(interval, run, slider) {
+let autoplay = function(interval, run, slider) {
     clearInterval(interval);
     interval = setInterval(() => {
         if (run && slider) {
