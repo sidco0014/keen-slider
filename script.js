@@ -19,9 +19,17 @@ let createSliderBody = function (imageList, callback) {
     callback(imageList);
 }
 
+/*
+Loading slider with images and initializing KeenSlider object
+@params: list of images
+@return: none
+
+*/
 let loadSliderWithData = function (images) {
     let elements = document.querySelectorAll(".lazy__slide div")
     let loaded = [];
+    let isAutoplay = true;
+    let interval = 0;
     let slider = new KeenSlider("#my-keen-slider", {
         created: function (instance) {
             document
@@ -65,8 +73,20 @@ let loadSliderWithData = function (images) {
         loop: true,
         initial: 0,
     })
+    // disable autoplay and destroy controls if there is only one slide
+    if(slider.details().size === 1){
+        isAutoplay = false;
+        slider.destroy();
+    }
+    autoplay(interval, isAutoplay, slider) // true / false means to make autoplay true or false;
 }
 
+/*
+Adding arrow and dots to slider
+@params: instance of the slide
+@return: none
+
+*/
 let updateClasses = function (instance) {
     let slide = instance.details().relativeSlide;
     let arrowLeft = document.getElementById("arrow-left")
@@ -84,4 +104,20 @@ let updateClasses = function (instance) {
             ? dot.classList.add("dot--active")
             : dot.classList.remove("dot--active")
     })
+}
+
+
+/*
+Custom function to autoplay slide
+@params: interval timer, boolean to autoplay or not, slider object
+@return: none
+
+*/
+function autoplay(interval, run, slider) {
+    clearInterval(interval);
+    interval = setInterval(() => {
+        if (run && slider) {
+            slider.next();
+        }
+    }, 3000);
 }
