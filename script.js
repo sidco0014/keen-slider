@@ -51,9 +51,15 @@ let loadSliderWithData = function (images) {
         },
         afterChange: (s) => {
             const slideIdx = s.details().relativeSlide
-            loaded[slideIdx] = true
+            const size = s.details().size;
+            if(slideIdx < size){
+                loaded[slideIdx] = true
+                loaded[slideIdx+1] = true //keep next slide loaded!
+            }
             elements.forEach((element, idx) => {
-                if (loaded[idx]) element.style.backgroundImage = `url(${images[idx]})`
+                if (loaded[idx]) {
+                    element.style.backgroundImage = `url(${images[idx]})`
+                }
             })
         },
         loop: true,
